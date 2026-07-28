@@ -97,4 +97,4 @@ $this->app->singleton(PdfDriver::class, function () {
 
 The following custom drivers are maintained by the community and are not officially supported by Spatie:
 
-- [`bladepdf/spatie-laravel-pdf-driver`](https://github.com/bladepdf/spatie-laravel-pdf-driver) — renders PDFs using BladePDF's managed Chromium API. A BladePDF account and API key are required.
+- [`bladepdf/spatie-laravel-pdf-driver`](https://github.com/bladepdf/spatie-laravel-pdf-driver): renders PDFs using BladePDF's managed Chromium API. A BladePDF account and API key are required.
