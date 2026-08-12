@@ -2,6 +2,26 @@
 
 All notable changes to `laravel-pdf` will be documented in this file.
 
+## 2.12.1 - 2026-08-12
+
+### What's Changed
+
+* Bump actions/checkout from 6 to 7 by @dependabot[bot] in https://github.com/spatie/laravel-pdf/pull/353
+* Document Chromium header and footer caveats by @freekmurze in https://github.com/spatie/laravel-pdf/pull/359
+* Bump actions/setup-python from 6 to 7 by @dependabot[bot] in https://github.com/spatie/laravel-pdf/pull/357
+* Bump actions/setup-node from 6 to 7 by @dependabot[bot] in https://github.com/spatie/laravel-pdf/pull/356
+* Document BladePDF community driver by @bladepdf in https://github.com/spatie/laravel-pdf/pull/362
+* Fix typo in introduction.md regarding PDF testing by @mnaderian in https://github.com/spatie/laravel-pdf/pull/363
+* Parse the trailer dictionary by structure instead of a fixed byte window by @Bosun18 in https://github.com/spatie/laravel-pdf/pull/364
+
+### New Contributors
+
+* @bladepdf made their first contribution in https://github.com/spatie/laravel-pdf/pull/362
+* @mnaderian made their first contribution in https://github.com/spatie/laravel-pdf/pull/363
+* @Bosun18 made their first contribution in https://github.com/spatie/laravel-pdf/pull/364
+
+**Full Changelog**: https://github.com/spatie/laravel-pdf/compare/2.12.0...2.12.1
+
 ## 2.12.0 - 2026-06-11
 
 ### What's Changed
