@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-pdf` will be documented in this file.
 
+## 2.13.0 - 2026-08-17
+
+### What's Changed
+
+* Added document outline option to PDF driver by @Zwartpet in https://github.com/spatie/laravel-pdf/pull/365
+
+### New Contributors
+
+* @Zwartpet made their first contribution in https://github.com/spatie/laravel-pdf/pull/365
+
+**Full Changelog**: https://github.com/spatie/laravel-pdf/compare/2.12.1...2.13.0
+
 ## 2.12.1 - 2026-08-12
 
 ### What's Changed
