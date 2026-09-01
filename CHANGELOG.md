@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-pdf` will be documented in this file.
 
+## 2.13.1 - 2026-09-01
+
+### What's Changed
+
+* Return a dummy PDF from the fake instead of rendering one by @freekmurze in https://github.com/spatie/laravel-pdf/pull/367
+
+**Full Changelog**: https://github.com/spatie/laravel-pdf/compare/2.13.0...2.13.1
+
 ## 2.13.0 - 2026-08-17
 
 ### What's Changed
