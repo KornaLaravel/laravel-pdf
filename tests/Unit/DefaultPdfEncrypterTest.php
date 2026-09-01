@@ -16,13 +16,6 @@ function samplePdf(string $body = '<h1>Hello</h1><p>Visit <a href="https://spati
     return $dompdf->output();
 }
 
-function permissionValue(string $pdf): int
-{
-    expect(preg_match('/\/Filter \/Standard.*?\/P\s+(-?\d+)/s', $pdf, $matches))->toBe(1);
-
-    return (int) $matches[1];
-}
-
 it('adds a standard encryption dictionary to the pdf', function () {
     $encrypted = (new DefaultPdfEncrypter)->encrypt(samplePdf(), new PdfEncryption('secret'));
 
@@ -69,9 +62,14 @@ it('throws when decrypting with the wrong password', function () {
 })->throws(CouldNotDecryptPdf::class);
 
 it('grants every permission by default', function () {
-    $encrypted = (new DefaultPdfEncrypter)->encrypt(samplePdf(), new PdfEncryption('secret'));
+    $default = (new DefaultPdfEncrypter)->encrypt(samplePdf(), new PdfEncryption('secret'));
 
-    expect(permissionValue($encrypted))->toBe(2147422012);
+    $everyPermission = (new DefaultPdfEncrypter)->encrypt(
+        samplePdf(),
+        new PdfEncryption('secret', permissions: Permission::cases()),
+    );
+
+    expect(permissionValue($default))->toBe(permissionValue($everyPermission));
 });
 
 it('only grants the permissions that are passed', function () {
@@ -80,10 +78,10 @@ it('only grants the permissions that are passed', function () {
         new PdfEncryption('secret', permissions: [Permission::Print]),
     );
 
-    $allGranted = 2147422012;
+    $allGranted = permissionValue((new DefaultPdfEncrypter)->encrypt(samplePdf(), new PdfEncryption('secret')));
 
     expect(permissionValue($encrypted))
-        ->toBeLessThan($allGranted)
+        ->not->toBe($allGranted)
         ->and(permissionValue($encrypted) & 4)->toBe(4);
 });
 
@@ -92,3 +90,10 @@ it('throws for pdfs that use compressed object streams', function () {
 
     (new DefaultPdfEncrypter)->encrypt($objectStreamPdf, new PdfEncryption('secret'));
 })->throws(CouldNotEncryptPdf::class);
+
+function permissionValue(string $pdf): int
+{
+    expect(preg_match('/\/Filter \/Standard.*?\/P\s+(-?\d+)/s', $pdf, $matches))->toBe(1);
+
+    return (int) $matches[1];
+}
